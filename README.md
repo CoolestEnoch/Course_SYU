@@ -4,4 +4,4 @@
 沈阳大学20级大二下[项目管理]课上课笔记
 
 
-## [前往笔记](code/FirstNote.md)
+## [前往笔记](code/main_note.md)
