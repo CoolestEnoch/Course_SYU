@@ -327,7 +327,3 @@ Projects the change in the form’s stock value if a project is undertaken.
 
 A project must meet a **minimum rate of return** before it is worthy of
 consideration.![](media/a1e1e7726aee10459f9cbc02b5920474.png)
-
-**I**
-
-A
