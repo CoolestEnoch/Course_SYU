@@ -4,12 +4,19 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+### Hi there 👋
 
-### More Information
+- 🔭 I’m currently working on something interesting
+- 🌱 I’m currently learning computer science
+- 👯 I’m looking to collaborate on software engineering
+- 🤔 I’m looking for help with someone great
+- 💬 Ask me about what you like
+- 📫 How to reach me: [Here!](https://github.com/CoolestEnoch/)
+- 😄 Pronouns: ...
+- ⚡ Fun fact: doing something interesting via programming
 
-A place to include any other types of information that you'd like to include about yourself.
+> <div align="center"> <img src="https://v2.jinrishici.com/one.svg" /> </div>
 
-### Contact me
+[![pic](http://api.btstu.cn/sjbz/?lx=dongman)](https://github.com/CoolestEnoch/)
 
-[email@domain.com](mailto:email@domain.com)
+[![Motto](https://readme-typing-svg.herokuapp.com/?lines=今天你躺平了吗\(bushi&center=true&size=27)](https://github.com/CoolestEnoch/)
