@@ -1,5 +1,7 @@
 # 学习资料
 
+[![pages-build-deployment](https://github.com/CoolestEnoch/Course_SYU/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/CoolestEnoch/Course_SYU/actions/workflows/pages/pages-build-deployment)
+
 
 沈阳大学20级资料
 
