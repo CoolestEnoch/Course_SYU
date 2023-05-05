@@ -19,4 +19,4 @@ permalink: /about/
 
 [![pic](http://api.btstu.cn/sjbz/?lx=dongman)](https://github.com/CoolestEnoch/)
 
-[![Motto](https://readme-typing-svg.herokuapp.com/?lines=今天你躺平了吗\(bushi&center=true&size=27)](https://github.com/CoolestEnoch/)
+<img src="https://readme-typing-svg.herokuapp.com/?lines=今天你躺平了吗(bushi&center=true&size=27" />
