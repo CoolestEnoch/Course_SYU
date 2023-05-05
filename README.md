@@ -3,6 +3,8 @@
 
 沈阳大学20级资料
 
+***大三下开始请前往[本处](https://coolestenoch.github.io/Course_SYU/)查看***
+
 ## 大三上
 
 > [**物流**](code/3-1/Logistics/0914.md)
