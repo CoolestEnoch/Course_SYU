@@ -2,11 +2,47 @@
 layout: default
 ---
 
+ <style>
+    .content-wrapper {
+      display: flex;
+    }
+
+    .img-container {
+      width: auto;
+      height: 0;
+      padding-top: 100%; /* 设置高度为宽度的百分比，保持图片为正方形 */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%; /* 图片宽度填满父容器 */
+      height: 100%; /* 图片高度填满父容器 */
+      object-fit: cover; /* 保持图片原比例并填满容器 */
+      border-radius: 50%; /* 裁剪为圆形 */
+      margin-right: 10px; /* 调整标题和图片的间距 */
+    }
+
+    h1 {
+      display: flex;
+      align-items: center; /* 垂直居中 */
+    }
+  </style>
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
-
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+      
+      <div class="content-wrapper">
+        <div class="img-container">
+          <img src="https://www.loliapi.com/acg/" alt="Image">
+        </div>
+        <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+      </div>
 
       <div class="entry">
         <!-- {{ post.excerpt }} -->
