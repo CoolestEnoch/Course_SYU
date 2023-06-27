@@ -3,15 +3,16 @@ layout: default
 ---
 
 <article class="post">
-  <div class="content-wrapper">
-      <div class="img-container">
-        <img src="{{ "/path/to/your/image.jpg" | prepend: site.baseurl }}" alt="Image">
-      </div>
-      <h1>{{ page.title }}</h1>
-    </div>
+  <h1>{{ page.title }}</h1>
 
   <div class="entry">
+
+    <div class="content-wrapper">
+      <div class="img-container">
+        <img src="{{ "https://www.loliapi.com/acg/" | prepend: site.baseurl }}" alt="Image">
+      </div>
     {{ content }}
+    </div>
   </div>
 
   <div class="date">
