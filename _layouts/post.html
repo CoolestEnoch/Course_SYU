@@ -2,18 +2,57 @@
 layout: default
 ---
 
-<article class="post">
-  <h1>{{ page.title }}</h1>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .content-wrapper {
+      display: flex;
+    }
 
-  <div class="entry">
-    {{ content }}
-  </div>
+    .img-container {
+      width: auto;
+      height: 0;
+      padding-top: 100%; /* 设置高度为宽度的百分比，保持图片为正方形 */
+      position: relative;
+      overflow: hidden;
+    }
 
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
+    .img-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%; /* 图片宽度填满父容器 */
+      height: 100%; /* 图片高度填满父容器 */
+      object-fit: cover; /* 保持图片原比例并填满容器 */
+      border-radius: 50%; /* 裁剪为圆形 */
+      margin-right: 10px; /* 调整标题和图片的间距 */
+    }
 
-  <img src="https://www.loliapi.com/acg/" height="192" width="108" />
+    h1 {
+      display: flex;
+      align-items: center; /* 垂直居中 */
+    }
+  </style>
+</head>
+<body>
+  <article class="post">
+    <div class="content-wrapper">
+      <div class="img-container">
+        <img src="https://www.loliapi.com/acg/" alt="Image">
+      </div>
+      <h1>{{ page.title }}</h1>
+    </div>
 
-  {% include disqus.html %}
-</article>
+    <div class="entry">
+      {{ content }}
+    </div>
+
+    <div class="date">
+      Written on {{ page.date | date: "%B %e, %Y" }}
+    </div>
+
+    {% include disqus.html %}
+  </article>
+</body>
