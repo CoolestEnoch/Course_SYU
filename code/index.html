@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>wdnmd</title>
+    </head>
+    <body>
+
+        <h1><a href="main.html">main</a></h1><br>
+        <h1><a href="cssdemo.html">cssdemo</a></h1><br>
+        <h1><a href="elasticView.html">elasticView</a></h1><br>
+        <h1><a href="miShop.html">miShop</a></h1><br>
+
+        <!-- 整活 -->
+        <script src="js/my/emojiCursor.js"></script>
+        <script src="js/my/clickeffect.js"></script>
+        <script src="js/my/clickWord.js"></script>
+
+
+
+        <meta name="viewport" content="width=device-width">
+        <style>
+          .sakana-box{
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          transform-origin: 0% 100%; /* 从左下开始变换 */
+            }
+        </style>
+        <div class="sakana-box" style='position:fixed; z-index:999; left:0; bottom:0;'></div>
+        <script src="https://cdn.jsdelivr.net/npm/sakana@1.0.8"></script>
+        <script>
+            // 取消静音
+            Sakana.setMute(false);
+            // 启动
+            Sakana.init({
+                el:         '.sakana-box',     // 启动元素 node 或 选择器
+                scale:      .5,                // 缩放倍数
+                canSwitchCharacter: true,      // 允许换角色
+            });
+        </script>
+        <!-- 整活 end -->
+    </body>
+</html>
