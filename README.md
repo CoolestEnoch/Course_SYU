@@ -5,6 +5,10 @@
 
 沈阳大学20级资料
 
+
+> 毕业快乐！本站将归档处理。
+
+
 ***大三下开始请前往[本处](https://coolestenoch.github.io/Course_SYU/)查看***
 
 ## 大三上
