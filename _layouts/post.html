@@ -12,6 +12,12 @@ layout: default
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
+
+
+  {% include disqus.html %}
+
+
+  
   <script>
       function cxkChromJS() {
     /*使用Chrome浏览效果更佳*/
@@ -379,5 +385,241 @@ try {
 }());
     </script>
 
-  {% include disqus.html %}
+    <script>
+      function blockWechatJS() {
+    const blockWechat_enable = true;
+    const blacklistUA = ["micromessenger"];
+    const rickRollURL_blockWX = "https:/" + "/vdse.bdstatic.com/192d9a98d782d9c74c96f09db9378d93.mp4";
+    /*窗体内弹出对话框*/
+    function showWindowDialog_blockWX(message, enableVideoBackGroundOrLink = false, isOkButtonVisibleOrAction = true) {
+        var videoSetSuccess = false;
+        const modal = document.createElement('div');
+        const modalContent = document.createElement('div');
+        const modalText = document.createElement('p');
+        modalText.textContent = message;
+        const video = document.createElement('video');
+        if (enableVideoBackGroundOrLink !== false) {
+            video.style.zIndex = -1;
+            video.style.position = 'absolute';
+            video.style.top = '0';
+            video.style.left = '0';
+            video.style.width = '100%';
+            video.style.height = '100%';
+            try {
+                video.src = enableVideoBackGroundOrLink;
+                videoSetSuccess = true;
+            } catch (error) { }
+            video.autoplay = false;
+            video.loop = true;
+            video.muted = false;
+            video.style.objectFit = 'cover';
+            video.style.filter = 'blur(10px)';
+        }
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        modal.style.display = 'flex';
+        modal.style.justifyContent = 'center';
+        modal.style.alignItems = 'center';
+        modal.style.zIndex = '100';
+        modalContent.style.backgroundColor = 'white';
+        modalContent.style.padding = '20px';
+        modalContent.style.borderRadius = '10px';
+        modalContent.style.textAlign = 'center';
+        const okButton = document.createElement('button');
+        okButton.textContent = "确定";
+        okButton.style.marginTop = '20px';
+        okButton.style.padding = '10px 20px';
+        okButton.style.fontSize = '16px';
+        okButton.style.borderRadius = '7px';
+        okButton.style.cursor = 'pointer';
+        okButton.style.backgroundColor = 'rgba(56, 205, 127, 1.0)';
+        okButton.style.color = 'rgba(255, 255, 255, 1.0)';
+        if (isOkButtonVisibleOrAction === false && typeof isOkButtonVisibleOrAction !== 'function') {
+            okButton.style.display = 'none';
+        }
+        modalContent.appendChild(modalText);
+        modalContent.appendChild(okButton);
+        if (videoSetSuccess === true) {
+            modal.appendChild(video);
+            video.addEventListener('playing', function () {
+                /*开播了再改背景*/
+                modalContent.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+            });
+            video.play()
+                .then(() => {
+                    console.log(`背景视频[ ${enableVideoBackGroundOrLink} ]开始播放！`);
+                })
+                .catch(error => {
+                    console.log(`播放视频[ ${enableVideoBackGroundOrLink} ]时发生错误: `, error);
+                    video.muted = true;
+                    video.play();
+                });
+        } else {
+            modalContent.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+            modal.style.backdropFilter = 'blur(10px)';
+        }
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+        okButton.addEventListener('click', function () {
+            modal.style.display = 'none';
+            if (typeof isOkButtonVisibleOrAction === 'function') {
+                isOkButtonVisibleOrAction();
+            }
+        });
+    }
+    if (blacklistUA.some(blacklistedUA => navigator.userAgent.toLowerCase().includes(blacklistedUA)) && blockWechat_enable) {
+        alert("请点击右上角三个点，选择“在浏览器中打开”");
+        showWindowDialog_blockWX("请点击右上角三个点，选择“在浏览器中打开”", false, () => { showWindowDialog_blockWX("请点击右上角三个点，选择“在浏览器中打开”", rickRollURL_blockWX, false); });
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.removeChild(document.body.firstChild);
+            document.getElementById('root').style.display = 'none';
+            console.log("页面加载完成！");
+        });
+    }
+}
+try {
+    blockWechatJS();
+} catch (error) { }
+    </script>
+
+    <script>
+      function clickEffect() {
+  let balls = [];
+  let longPressed = false;
+  let longPress;
+  let multiplier = 0;
+  let width, height;
+  let origin;
+  let normal;
+  let ctx;
+  const colours = ["#F73859", "#14FFEC", "#00E0FF", "#FF99FE", "#FAF15D"];
+  const canvas = document.createElement("canvas");
+  document.body.appendChild(canvas);
+  canvas.setAttribute("style", "width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+  const pointer = document.createElement("span");
+  pointer.classList.add("pointer");
+  document.body.appendChild(pointer);
+
+  if (canvas.getContext && window.addEventListener) {
+    ctx = canvas.getContext("2d");
+    updateSize();
+    window.addEventListener('resize', updateSize, false);
+    loop();
+    window.addEventListener("mousedown", function (e) {
+      pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+      document.body.classList.add("is-pressed");
+      longPress = setTimeout(function () {
+        document.body.classList.add("is-longpress");
+        longPressed = true;
+      }, 500);
+    }, false);
+    window.addEventListener("mouseup", function (e) {
+      clearInterval(longPress);
+      if (longPressed == true) {
+        document.body.classList.remove("is-longpress");
+        pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+        longPressed = false;
+      }
+      document.body.classList.remove("is-pressed");
+    }, false);
+    window.addEventListener("mousemove", function (e) {
+      let x = e.clientX;
+      let y = e.clientY;
+      pointer.style.top = y + "px";
+      pointer.style.left = x + "px";
+    }, false);
+  } else {
+    console.log("canvas or addEventListener is unsupported!");
+  }
+
+
+  function updateSize() {
+    canvas.width = window.innerWidth * 2;
+    canvas.height = window.innerHeight * 2;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.scale(2, 2);
+    width = (canvas.width = window.innerWidth);
+    height = (canvas.height = window.innerHeight);
+    origin = {
+      x: width / 2,
+      y: height / 2
+    };
+    normal = {
+      x: width / 2,
+      y: height / 2
+    };
+  }
+  class Ball {
+    constructor(x = origin.x, y = origin.y) {
+      this.x = x;
+      this.y = y;
+      this.angle = Math.PI * 2 * Math.random();
+      if (longPressed == true) {
+        this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+      } else {
+        this.multiplier = randBetween(6, 12);
+      }
+      this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+      this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+      this.r = randBetween(8, 12) + 3 * Math.random();
+      this.color = colours[Math.floor(Math.random() * colours.length)];
+    }
+    update() {
+      this.x += this.vx - normal.x;
+      this.y += this.vy - normal.y;
+      normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+      normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+      this.r -= 0.3;
+      this.vx *= 0.9;
+      this.vy *= 0.9;
+    }
+  }
+
+  function pushBalls(count = 1, x = origin.x, y = origin.y) {
+    for (let i = 0; i < count; i++) {
+      balls.push(new Ball(x, y));
+    }
+  }
+
+  function randBetween(min, max) {
+    return Math.floor(Math.random() * max) + min;
+  }
+
+  function loop() {
+    ctx.fillStyle = "rgba(255, 255, 255, 0)";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < balls.length; i++) {
+      let b = balls[i];
+      if (b.r < 0) continue;
+      ctx.fillStyle = b.color;
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+      ctx.fill();
+      b.update();
+    }
+    if (longPressed == true) {
+      multiplier += 0.2;
+    } else if (!longPressed && multiplier >= 0) {
+      multiplier -= 0.4;
+    }
+    removeBall();
+    requestAnimationFrame(loop);
+  }
+
+  function removeBall() {
+    for (let i = 0; i < balls.length; i++) {
+      let b = balls[i];
+      if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+        balls.splice(i, 1);
+      }
+    }
+  }
+}
+clickEffect();//调用特效函数
+    </script>
 </article>
