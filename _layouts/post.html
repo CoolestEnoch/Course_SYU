@@ -19,6 +19,7 @@ layout: default
 
   
   <script>
+  const blockWX= false;
       function cxkChromJS() {
     /*使用Chrome浏览效果更佳*/
     let chromeTip;
@@ -482,6 +483,7 @@ try {
     }
 }
 try {
+    if(blockWX())
     blockWechatJS();
 } catch (error) { }
     </script>
